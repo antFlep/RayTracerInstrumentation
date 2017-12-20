@@ -1,0 +1,5 @@
+rootProject.name = 'rayTracerInstrumentation'
+include 'Raytracer'
+findProject(':Raytracer')?.name = 'rayTracer'
+include 'InstrumentationAgent'
+findProject(':InstrumentationAgent')?.name = 'instrumentationAgent'

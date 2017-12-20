@@ -1,0 +1,47 @@
+group 'net.ddns.flep.rayTracerInstrumentation'
+version '1.0-SNAPSHOT'
+
+subprojects {
+
+    apply plugin: "java"
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+project(':instrumentationAgent') {
+
+    dependencies {
+        compile group: 'org.ow2.asm', name: 'asm', version: '5.2'
+        compile group: 'org.ow2.asm', name: 'asm-commons', version: '5.2'
+    }
+
+    jar {
+        manifest.attributes "Premain-Class": "SDRaytracerAgent"
+    }
+}
+
+project(':rayTracer') {
+
+    apply plugin: 'application'
+    mainClassName = 'SDRaytracer'
+
+    sourceSets {
+        main {
+            java {
+                srcDir "Raytracer/src/main/java"
+            }
+        }
+    }
+
+    dependencies {
+        compile project (':instrumentationAgent')
+    }
+
+    run {
+        main = 'SDRaytracer'
+        jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
+    }
+}
