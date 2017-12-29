@@ -30,14 +30,21 @@ public class MyMethodVisitor extends AdviceAdapter implements Opcodes{
         mv.visitLdcInsn(mName);
         mv.visitVarInsn(LLOAD,starttime);
         mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/System" ,"nanoTime", "()J", false);
+
+        // Logging first and calculation afterwards
+        //mv.visitMethodInsn(INVOKESTATIC, "TimeLogger", "log","(Ljava/lang/String;JJ)V", false);
+
+
         mv.visitMethodInsn(INVOKESTATIC, "Metrics", "duration","(Ljava/lang/String;JJ)V", false);
 
+        // Calculations during runtime
         // Calculations are done here because the programs waits for input after rendering the image
         if (mName.equals("renderImage")) {
             mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
             mv.visitMethodInsn(INVOKESTATIC, "Metrics", "calcAverages","()Ljava/lang/String;", false);
             mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println","(Ljava/lang/String;)V", false);
         }
+
     }
 
 }
