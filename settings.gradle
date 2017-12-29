@@ -3,6 +3,3 @@ include 'Raytracer'
 findProject(':Raytracer')?.name = 'rayTracer'
 include 'InstrumentationAgent'
 findProject(':InstrumentationAgent')?.name = 'instrumentationAgent'
-include 'HelloWorld'
-findProject(':HelloWorld')?.name = 'helloWorld'
-

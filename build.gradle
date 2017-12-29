@@ -45,26 +45,3 @@ project(':rayTracer') {
         jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
     }
 }
-
-//project(':helloWorld') {
-//
-//    apply plugin: 'application'
-//    mainClassName = 'HelloWorld'
-//
-//    sourceSets {
-//        main {
-//            java {
-//                srcDir "HelloWorld/src/main/java"
-//            }
-//        }
-//    }
-//
-//    dependencies {
-//        compile project(':instrumentationAgent')
-//    }
-//
-//    run {
-//        main = 'HelloWorld'
-//        jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
-//    }
-//}
