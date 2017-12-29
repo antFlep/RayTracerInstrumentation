@@ -7,12 +7,14 @@ public class Metrics {
     public static Map<String, Long > sCount = new HashMap<>();
     public static Map<String, Long> sDuration = new HashMap<>();
 
-    public static  void increaseCounter(String methodName) {
+    public static void duration(String methodName, long start, long end) {
+
+        // Count number of calls
         long count = (sCount.get(methodName) == null) ? 1 : sCount.get(methodName) + 1;
         sCount.put(methodName, count);
-    }
 
-    public static void duration(String methodName, long start, long end) {
+        // Calculate method call duration,
+        // since this is a simple subtract operation it should not have a major impact on performance
         long duration = end - start;
         long sum = (sDuration.get(methodName) == null) ? duration : sDuration.get(methodName) + duration;
         sDuration.put(methodName, sum);

@@ -17,7 +17,7 @@ public class MyMethodVisitor extends AdviceAdapter implements Opcodes{
     @Override
     public  void onMethodEnter() {
 
-        // push starttime onto the stack
+        // Push starttime onto the stack
         starttime = newLocal(Type.LONG_TYPE);
         mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/System" ,"nanoTime", "()J", false);
         mv.visitVarInsn(Opcodes.LSTORE, starttime);
@@ -26,16 +26,13 @@ public class MyMethodVisitor extends AdviceAdapter implements Opcodes{
     @Override
     public  void onMethodExit(int opcode) {
 
-        //Nr. of calls is only incremented at the end in order to not falsify our results
-        mv.visitLdcInsn(mName);
-        mv.visitMethodInsn(INVOKESTATIC, "Metrics", "increaseCounter","(Ljava/lang/String;)V", false);
-
+        // get starttime from the stack, see the current time (endtime) and save them (call the duration method)
         mv.visitLdcInsn(mName);
         mv.visitVarInsn(LLOAD,starttime);
         mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/System" ,"nanoTime", "()J", false);
         mv.visitMethodInsn(INVOKESTATIC, "Metrics", "duration","(Ljava/lang/String;JJ)V", false);
 
-        // calculations are done here because the programs waits for intput after rendenering the image
+        // Calculations are done here because the programs waits for input after rendering the image
         if (mName.equals("renderImage")) {
             mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
             mv.visitMethodInsn(INVOKESTATIC, "Metrics", "calcAverages","()Ljava/lang/String;", false);
