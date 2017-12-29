@@ -23,48 +23,48 @@ project(':instrumentationAgent') {
     }
 }
 
-//project(':rayTracer') {
-//
-//    apply plugin: 'application'
-//    mainClassName = 'SDRaytracer'
-//
-//    sourceSets {
-//        main {
-//            java {
-//                srcDir "Raytracer/src/main/java"
-//            }
-//        }
-//    }
-//
-//    dependencies {
-//        compile project (':instrumentationAgent')
-//    }
-//
-//    run {
-//        main = 'SDRaytracer'
-//        jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
-//    }
-//}
-
-project(':helloWorld') {
+project(':rayTracer') {
 
     apply plugin: 'application'
-    mainClassName = 'HelloWorld'
+    mainClassName = 'SDRaytracer'
 
     sourceSets {
         main {
             java {
-                srcDir "HelloWorld/src/main/java"
+                srcDir "Raytracer/src/main/java"
             }
         }
     }
 
     dependencies {
-        compile project(':instrumentationAgent')
+        compile project (':instrumentationAgent')
     }
 
     run {
-        main = 'HelloWorld'
+        main = 'SDRaytracer'
         jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
     }
 }
+
+//project(':helloWorld') {
+//
+//    apply plugin: 'application'
+//    mainClassName = 'HelloWorld'
+//
+//    sourceSets {
+//        main {
+//            java {
+//                srcDir "HelloWorld/src/main/java"
+//            }
+//        }
+//    }
+//
+//    dependencies {
+//        compile project(':instrumentationAgent')
+//    }
+//
+//    run {
+//        main = 'HelloWorld'
+//        jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
+//    }
+//}
