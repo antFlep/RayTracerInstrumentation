@@ -28,14 +28,6 @@ project(':rayTracer') {
     apply plugin: 'application'
     mainClassName = 'SDRaytracer'
 
-    sourceSets {
-        main {
-            java {
-                srcDir "Raytracer/src/main/java"
-            }
-        }
-    }
-
     dependencies {
         compile project (':instrumentationAgent')
     }

@@ -28,7 +28,7 @@ public class Metrics {
         for(String key: keys){
             long count = sCount.get(key);
             long duration = sDuration.get(key);
-            out += key + " - DURATION_SUM: " + duration + " - NR_OF_CALLS: " + count + " - AVERAGE_EXEC_TIME: " + ((duration*1.0)/count) + "\n";
+            out += key + " - DURATION_SUM: " + (duration/1000000000.0) + "s - NR_OF_CALLS: " + count + " - AVERAGE_EXEC_TIME: " + (((duration*1.0)/count)/1000000000.0) + "s\n";
         }
 
         return out ;
