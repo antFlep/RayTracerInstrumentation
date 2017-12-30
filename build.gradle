@@ -33,7 +33,6 @@ project(':rayTracer') {
     }
 
     run {
-        main = 'SDRaytracer'
         jvmArgs = ["-javaagent: ../../../InstrumentationAgent/build/libs/instrumentationAgent.jar"]
     }
 }
