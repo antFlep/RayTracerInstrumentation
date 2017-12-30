@@ -1,3 +1,7 @@
+/*
+    Name: Filipe Emanuel Antunes Almeida
+    Matrikelnummer: 1103386
+ */
 
 import javax.swing.*;
 import java.awt.*;

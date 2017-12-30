@@ -1,3 +1,8 @@
+/*
+    Name: Filipe Emanuel Antunes Almeida
+    Matrikelnummer: 1103386
+ */
+
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 

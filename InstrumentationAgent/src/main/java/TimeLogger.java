@@ -1,3 +1,8 @@
+/*
+    Name: Filipe Emanuel Antunes Almeida
+    Matrikelnummer: 1103386
+ */
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
